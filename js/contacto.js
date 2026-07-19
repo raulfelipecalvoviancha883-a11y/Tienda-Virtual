@@ -335,4 +335,83 @@ const handleFormSubmit = async (e) => {
   formData = getFormData();
   
   // Marcar como enviando
-  isSubmitting = true; }
+  isSubmitting = true;
+  if (DOM.submitBtn) {
+    DOM.submitBtn.disabled = true;
+    DOM.submitBtn.textContent = 'Enviando...';
+  }
+
+  try {
+    const response = await submitFormData(formData);
+    setFormStatus(response.message, 'success');
+    resetForm();
+  } catch (error) {
+    setFormStatus(CONFIG.messages.error, 'error');
+  } finally {
+    isSubmitting = false;
+    if (DOM.submitBtn) {
+      DOM.submitBtn.disabled = false;
+      DOM.submitBtn.textContent = '✉️ Enviar mensaje';
+    }
+  }
+};
+
+// ==========================================
+// EVENT LISTENERS
+// ==========================================
+
+if (DOM.form) {
+  DOM.form.addEventListener('submit', handleFormSubmit);
+}
+
+// Botón "Limpiar": el navegador ya vacía los campos (type="reset"),
+// aquí solo limpiamos nuestros mensajes de error y el contador.
+if (DOM.resetBtn) {
+  DOM.resetBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.form-group.error').forEach(group => {
+        group.classList.remove('error');
+      });
+      document.querySelectorAll('.error-message.visible').forEach(el => {
+        el.classList.remove('visible');
+        el.textContent = '';
+      });
+      if (DOM.formStatus) {
+        DOM.formStatus.style.display = 'none';
+        DOM.formStatus.className = 'form-status';
+        DOM.formStatus.textContent = '';
+      }
+      updateCharCounter();
+    }, 0);
+  });
+}
+
+// Validación en tiempo real: al salir de un campo, y mientras se
+// escribe si ya tenía un error visible.
+[DOM.nombre, DOM.email, DOM.telefono, DOM.asunto, DOM.mensaje].forEach(field => {
+  if (!field) return;
+  field.addEventListener('blur', () => validateField(field));
+  field.addEventListener('input', () => {
+    const group = field.closest('.form-group');
+    if (group && group.classList.contains('error')) {
+      validateField(field);
+    }
+  });
+});
+
+if (DOM.terminos) {
+  DOM.terminos.addEventListener('change', () => validateField(DOM.terminos));
+}
+
+// Contador de caracteres del mensaje
+if (DOM.mensaje) {
+  DOM.mensaje.addEventListener('input', updateCharCounter);
+}
+
+// ==========================================
+// INICIALIZACIÓN
+// ==========================================
+
+updateCharCounter();
+
+console.log('📬 Iron Rebel Garage · Formulario de contacto listo');

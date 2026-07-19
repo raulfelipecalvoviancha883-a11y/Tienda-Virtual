@@ -222,10 +222,20 @@
   const gridContainer = document.getElementById('gridContainer');
   const detallesContainer = document.getElementById('detalles');
   const filterForm = document.getElementById('filtrosForm');
-  const searchInput = document.querySelector('nav form input[type="text"]');
-  const searchForm = document.querySelector('nav form');
-  const resetBtn = document.querySelector('#filtrosForm button[type="reset"]');
+  const searchInput = document.getElementById('searchInput');
+  const searchForm = document.getElementById('searchForm');
+  const resetBtn = filterForm ? filterForm.querySelector('button[type="reset"]') : null;
   const countDisplay = document.getElementById('motoCount');
+
+  // ---------- FUNCIÓN PARA GENERAR SVG DE IMAGEN ----------
+  function generateMotoImage(nombre, estilo, cc) {
+    const estiloCapitalizado = estilo.charAt(0).toUpperCase() + estilo.slice(1);
+    return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%231a1a1a'/%3E%3Ctext x='40' y='130' font-family='Arial' font-size='20' fill='%23d4af37'%3E🏍️ ${encodeURIComponent(nombre)}%3C/text%3E%3Ctext x='40' y='170' font-family='Arial' font-size='14' fill='%23cccccc'%3E${encodeURIComponent(estiloCapitalizado)} · ${cc}cc%3C/text%3E%3C/svg%3E`;
+  }
+
+  function generateDetailImage(nombre) {
+    return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Crect width='600' height='300' fill='%231a1a1a'/%3E%3Ctext x='60' y='150' font-family='Arial' font-size='28' fill='%23d4af37'%3E🏍️ ${encodeURIComponent(nombre)}%3C/text%3E%3Ctext x='60' y='190' font-family='Arial' font-size='16' fill='%23cccccc'%3EDetalle del modelo%3C/text%3E%3C/svg%3E`;
+  }
 
   // ---------- FUNCIÓN PARA RENDERIZAR TARJETAS ----------
   function renderMotos(lista) {
@@ -253,7 +263,7 @@
       article.id = `card-${moto.id}`;
       article.innerHTML = `
         <div>
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%231a1a1a'/%3E%3Ctext x='40' y='130' font-family='Arial' font-size='20' fill='%23d4af37'%3E🏍️ ${moto.nombre}%3C/text%3E%3Ctext x='40' y='170' font-family='Arial' font-size='14' fill='%23cccccc'%3E${moto.estilo.charAt(0).toUpperCase() + moto.estilo.slice(1)} · ${moto.cc}cc%3C/text%3E%3C/svg%3E" 
+          <img src="${generateMotoImage(moto.nombre, moto.estilo, moto.cc)}" 
                alt="${moto.nombre} - ${moto.cc}cc">
           <h3>${moto.nombre}</h3>
           <ul>
@@ -261,7 +271,7 @@
             <li>🛞 ${moto.peso} kg · ${moto.seguridad.split(',')[0]}</li>
             <li>🔥 ${moto.estilo.charAt(0).toUpperCase() + moto.estilo.slice(1)} · ${moto.uso}</li>
           </ul>
-          <a href="#detalle-${moto.id}">Ver más</a>
+          <a href="#detalle-${moto.id}" class="ver-mas-link">Ver más</a>
         </div>
       `;
       gridContainer.appendChild(article);
@@ -289,7 +299,7 @@
         <article>
           <h3>${moto.nombre}</h3>
           <div>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Crect width='600' height='300' fill='%231a1a1a'/%3E%3Ctext x='60' y='150' font-family='Arial' font-size='28' fill='%23d4af37'%3E🏍️ ${moto.nombre}%3C/text%3E%3Ctext x='60' y='190' font-family='Arial' font-size='16' fill='%23cccccc'%3E${moto.estilo} · ${moto.cc}cc%3C/text%3E%3C/svg%3E" 
+            <img src="${generateDetailImage(moto.nombre)}" 
                  alt="Detalle ${moto.nombre}">
             <ul>
               <li><strong>Cilindrada:</strong> ${moto.cc} cc</li>
@@ -300,7 +310,7 @@
               <li><strong>Uso recomendado:</strong> ${moto.uso.charAt(0).toUpperCase() + moto.uso.slice(1)}</li>
               <li><strong>Equipamiento:</strong> ${moto.equipamiento}</li>
             </ul>
-            <a href="#catalogo">⬅️ Volver al catálogo</a>
+            <a href="#catalogo" class="volver-link">⬅️ Volver al catálogo</a>
           </div>
         </article>
       `;
@@ -308,28 +318,7 @@
     });
   }
 
-  // ---------- FUNCIÓN PARA ACTUALIZAR DETALLES (ocultar/mostrar) ----------
-  function updateDetalles(lista) {
-    // Obtener todas las secciones de detalle
-    const detalleSections = document.querySelectorAll('section[id^="detalle-"]');
-    
-    if (detalleSections.length === 0) return;
-
-    // Ocultar todas las secciones de detalle primero
-    detalleSections.forEach(section => {
-      section.style.display = 'none';
-    });
-
-    // Mostrar solo los detalles de los modelos que están en la lista filtrada
-    lista.forEach(moto => {
-      const section = document.getElementById(`detalle-${moto.id}`);
-      if (section) {
-        section.style.display = 'block';
-      }
-    });
-  }
-
-  // ---------- FILTRADO ----------
+  // ---------- FUNCIÓN PARA FILTRAR MOTOS ----------
   function filtrarMotos() {
     // Obtener checkboxes seleccionados
     const checkboxes = filterForm ? filterForm.querySelectorAll('input[type="checkbox"]:checked') : [];
@@ -375,7 +364,16 @@
 
     // Renderizar resultados
     renderMotos(resultado);
-    updateDetalles(resultado);
+  }
+
+  // ---------- FUNCIÓN PARA LIMPIAR FILTROS ----------
+  function limpiarFiltros() {
+    if (filterForm) {
+      const checkboxes = filterForm.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
+    }
+    if (searchInput) searchInput.value = '';
+    filtrarMotos();
   }
 
   // ---------- EVENT LISTENERS ----------
@@ -390,12 +388,7 @@
     if (resetBtn) {
       resetBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        // Desmarcar todos los checkboxes
-        const checkboxes = filterForm.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(cb => cb.checked = false);
-        // Limpiar búsqueda
-        if (searchInput) searchInput.value = '';
-        filtrarMotos();
+        limpiarFiltros();
       });
     }
   }
@@ -411,32 +404,46 @@
     searchInput.addEventListener('input', filtrarMotos);
   }
 
-  // ---------- INICIALIZAR ----------
-  renderMotos(motos);
-
   // ---------- COMPORTAMIENTO DE ENLACES "VER MÁS" ----------
   document.addEventListener('click', function(e) {
-    const link = e.target.closest('article a[href^="#detalle-"]');
+    const link = e.target.closest('.ver-mas-link');
     if (link) {
       e.preventDefault();
       const targetId = link.getAttribute('href');
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Mostrar la sección de detalle si estaba oculta
         targetElement.style.display = 'block';
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   });
 
   // ---------- BOTONES "VOLVER AL CATÁLOGO" ----------
   document.addEventListener('click', function(e) {
-    const backLink = e.target.closest('section[id^="detalle-"] article a[href="#catalogo"]');
+    const backLink = e.target.closest('.volver-link');
     if (backLink) {
       e.preventDefault();
       const catalogo = document.getElementById('catalogo');
       if (catalogo) catalogo.scrollIntoView({ behavior: 'smooth' });
     }
   });
+
+  // ---------- LEER BÚSQUEDA DESDE LA URL (?buscar=) ----------
+  // El formulario de búsqueda de la barra de navegación (main.html)
+  // envía el término por GET a cliente.html?buscar=..., así que al
+  // cargar la página revisamos si viene ese parámetro y lo aplicamos.
+  function aplicarBusquedaDesdeURL() {
+    const params = new URLSearchParams(window.location.search);
+    const termino = params.get('buscar');
+    if (termino && searchInput) {
+      searchInput.value = termino;
+    }
+  }
+
+  // ---------- INICIALIZAR ----------
+  aplicarBusquedaDesdeURL();
+  filtrarMotos();
 
   console.log('🏍️ Iron Rebel Garage · Catálogo cargado correctamente');
   console.log(`📊 ${motos.length} modelos disponibles`);

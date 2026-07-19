@@ -4,11 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iron Rebel Garage · Catálogo</title>
-  <link rel="stylesheet" href="cliente.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/cliente.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ========== BARRA DE NAVEGACIÓN COMPARTIDA ========== -->
+  <!-- ========== BARRA DE NAVEGACIÓN ========== -->
   <header>
     <nav>
       <div class="logo">
@@ -16,12 +23,13 @@
       </div>
       <div>
         <ul>
+          <li><a href="cliente.html" class="active">Catálogo</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </div>
       <div>
         <form id="searchForm" action="cliente.html" method="get">
-          <input type="text" name="buscar" placeholder="Buscar modelo..." aria-label="Buscar moto">
+          <input type="text" id="searchInput" name="buscar" placeholder="Buscar modelo..." aria-label="Buscar moto">
           <button type="submit">🔍</button>
         </form>
       </div>
@@ -63,18 +71,19 @@
     </div>
   </section>
 
-  <!-- ========== GRID DE CATÁLOGO ========== -->
+  <!-- ========== GRID DE CATÁLOGO ==========
+       Las tarjetas se generan dinámicamente con js/cliente.js
+       a partir del array `motos`, así que aquí solo va el
+       contenedor vacío con el id que el script espera. -->
   <section id="catalogo">
     <h2>⚡ Catálogo Iron Rebel</h2>
-    <div id="gridContainer">
-      <!-- Las tarjetas se generan dinámicamente con JavaScript -->
-    </div>
+    <div id="gridContainer"></div>
   </section>
 
-  <!-- ========== DETALLES DE MODELOS ========== -->
+  <!-- ========== DETALLES DE MODELOS ==========
+       También generados dinámicamente por js/cliente.js. -->
   <section id="detalles">
     <h2>🔍 Detalle de modelos</h2>
-    <!-- Los detalles se generan dinámicamente con JavaScript -->
   </section>
 
   <!-- ========== FOOTER ========== -->
@@ -108,6 +117,6 @@
     </div>
   </footer>
 
-  <script src="cliente.js"></script>
+<script src="../js/cliente.js"></script>
 </body>
 </html>
