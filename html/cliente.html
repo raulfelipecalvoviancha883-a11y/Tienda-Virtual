@@ -2,815 +2,112 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Iron Rebel Garage | Catálogo Oficial</title>
-  <meta name="description" content="Catálogo oficial de motocicletas Iron Rebel Garage. Potencia, exclusividad y adrenalina.">
-  <link rel="stylesheet" href="../css/cliente.css">
-  <!-- Estilos adicionales inline para los precios (puedes moverlos a tu CSS) -->
-  <style>
-    /* Ajustes para mostrar precios de forma destacada */
-    .precio {
-      display: block;
-      font-family: 'Orbitron', 'Segoe UI', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #e63946;
-      margin: 0.5rem 1.2rem 0.2rem;
-      letter-spacing: 1px;
-    }
-    .precio-detalle {
-      font-size: 1.8rem;
-      color: #e63946;
-      font-weight: 700;
-      margin: 1rem 0;
-    }
-    .moto-card .precio {
-      margin-top: 0.2rem;
-    }
-    /* Ajuste en filtro de precio para mostrar valores sugeridos */
-    #filtro-catalogo input[type="number"]::placeholder {
-      color: #666;
-      font-size: 0.8rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Rebel Garage · Catálogo</title>
+  <link rel="stylesheet" href="cliente.css">
 </head>
 <body>
 
-  <!-- ============================= -->
-  <!-- HEADER / NAVEGACIÓN            -->
-  <!-- ============================= -->
-  <header id="site-header">
-    <div class="logo">
-      <a href="#hero">IRON REBEL GARAGE</a>
-    </div>
-    <nav id="main-nav">
-      <ul>
-        <li><a href="#touring">Touring</a></li>
-        <li><a href="#sport">Sport</a></li>
-        <li><a href="#urban">Urban</a></li>
-        <li><a href="#adventure">Adventure</a></li>
-        <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#dna">Iron Rebel DNA</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+  <!-- ========== BARRA DE NAVEGACIÓN COMPARTIDA ========== -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="cliente.html">⚡ IRON REBEL GARAGE</a>
+      </div>
+      <div>
+        <ul>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <form id="searchForm" action="cliente.html" method="get">
+          <input type="text" name="buscar" placeholder="Buscar modelo..." aria-label="Buscar moto">
+          <button type="submit">🔍</button>
+        </form>
+      </div>
     </nav>
   </header>
 
-  <!-- ============================= -->
-  <!-- INTRODUCCIÓN DE MARCA          -->
-  <!-- ============================= -->
-  <section id="intro-empresa">
-    <h2>IRON REBEL GARAGE</h2>
-    <p class="parrafo-empresa">
-      En Iron Rebel Garage cada moto pasa por un control de calidad riguroso
-      antes de llegar a tus manos, respaldada por garantía oficial y servicio
-      técnico especializado. Contamos con años de experiencia en el mundo
-      motero, asesoría personalizada para elegir el modelo perfecto según tu
-      estilo, y una comunidad de clientes que confían en nosotros para vivir
-      la carretera al máximo. No solo vendemos motos: construimos experiencias
-      que duran toda la vida.
-    </p>
-  </section>
-
-  <!-- ============================= -->
-  <!-- HERO SECTION                   -->
-  <!-- ============================= -->
-  <section id="hero">
-    <video autoplay muted loop poster="hero-poster.jpg">
-      <source src="hero-moto-accion.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>LIBERTAD SIN REGLAS</h1>
-      <p class="parrafo-inspirador">
-        Hay quienes buscan llegar a un lugar. Y hay quienes viven por el camino,
-        por el rugido del motor, por esa descarga de adrenalina que solo se siente
-        con el viento de frente y el asfalto por delante. Si esa sensación te llama,
-        ya perteneces a Iron Rebel.
-      </p>
-      <p class="slogan">Cada máquina, una declaración de poder.</p>
-
-      <a href="#catalogo" class="cta-principal">EXPLORAR CATÁLOGO</a>
-    </div>
-  </section>
-
-  <!-- ============================= -->
-  <!-- FILTRO INTERACTIVO            -->
-  <!-- ============================= -->
-  <section id="encuentra-tu-moto">
-    <h2>ENCUENTRA TU MOTO</h2>
-    <form id="filtro-catalogo" action="#catalogo" method="get">
-
-      <fieldset>
-        <legend>Cilindraje</legend>
-        <label for="cilindraje-min">Mínimo</label>
-        <input type="range" id="cilindraje-min" name="cilindraje-min" min="125" max="1800" step="25" value="125">
-        <label for="cilindraje-max">Máximo</label>
-        <input type="range" id="cilindraje-max" name="cilindraje-max" min="125" max="1800" step="25" value="1800">
-      </fieldset>
-
-      <fieldset>
-        <legend>Estilo</legend>
-        <label><input type="checkbox" name="estilo" value="naked"> Naked</label>
-        <label><input type="checkbox" name="estilo" value="cruiser"> Cruiser</label>
-        <label><input type="checkbox" name="estilo" value="sport"> Sport</label>
-        <label><input type="checkbox" name="estilo" value="adventure"> Adventure</label>
-        <label><input type="checkbox" name="estilo" value="urban"> Urban</label>
-        <label><input type="checkbox" name="estilo" value="touring"> Touring</label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Rango de precio (COP)</legend>
-        <label for="precio-min">Mínimo</label>
-        <input type="number" id="precio-min" name="precio-min" min="0" step="500000" placeholder="Ej. 5,000,000" value="5000000">
-        <label for="precio-max">Máximo</label>
-        <input type="number" id="precio-max" name="precio-max" min="0" step="500000" placeholder="Ej. 50,000,000" value="50000000">
-      </fieldset>
-
-      <button type="submit">FILTRAR</button>
-    </form>
-  </section>
-
-  <!-- ============================= -->
-  <!-- GRID DE CATÁLOGO              -->
-  <!-- ============================= -->
-  <section id="catalogo">
-    <h2>NUESTRA FLOTA</h2>
-    <p class="mensaje-persuasivo">
-      Cada moto de esta lista fue construida para exigir más de ti y darte más a cambio.
-      No estás viendo una lista de productos: estás viendo tu próxima decisión de vida.
-      Elige la que despierte esa sensación en el pecho y hazla tuya.
-    </p>
-
-    <div class="catalogo-grid">
-
-      <!-- 1 -->
-      <article class="moto-card" id="ranger-125">
-        <img src="ranger-125.jpg" alt="Iron Rebel Ranger 125">
-        <h3>RANGER 125</h3>
-        <p class="descripcion-corta">Nacida para la ciudad, la Ranger 125 es la puerta de entrada al mundo Iron Rebel: ágil, ligera y lista para el asfalto urbano desde el primer arranque.</p>
-        <ul class="specs-rapidas">
-          <li>125cc</li>
-          <li>Monocilíndrico</li>
-          <li>Urban</li>
-        </ul>
-        <span class="precio">$ 6.500.000</span>
-        <a href="#detalle-ranger-125">VER MÁS</a>
-      </article>
-
-      <!-- 2 -->
-      <article class="moto-card" id="street-fox-200">
-        <img src="street-fox-200.jpg" alt="Iron Rebel Street Fox 200">
-        <h3>STREET FOX 200</h3>
-        <p class="descripcion-corta">Diseñada para quienes dominan las calles al anochecer, la Street Fox 200 combina peso ligero con un carácter naked agresivo.</p>
-        <ul class="specs-rapidas">
-          <li>200cc</li>
-          <li>Monocilíndrico</li>
-          <li>Naked</li>
-        </ul>
-        <span class="precio">$ 8.200.000</span>
-        <a href="#detalle-street-fox-200">VER MÁS</a>
-      </article>
-
-      <!-- 3 -->
-      <article class="moto-card" id="blackwolf-300">
-        <img src="blackwolf-300.jpg" alt="Iron Rebel Blackwolf 300">
-        <h3>BLACKWOLF 300</h3>
-        <p class="descripcion-corta">La Blackwolf 300 ruge con un bicilíndrico paralelo pensado para quienes buscan su primera experiencia deportiva real.</p>
-        <ul class="specs-rapidas">
-          <li>300cc</li>
-          <li>Bicilíndrico paralelo</li>
-          <li>Sport</li>
-        </ul>
-        <span class="precio">$ 11.900.000</span>
-        <a href="#detalle-blackwolf-300">VER MÁS</a>
-      </article>
-
-      <!-- 4 -->
-      <article class="moto-card" id="nomad-400">
-        <img src="nomad-400.jpg" alt="Iron Rebel Nomad 400">
-        <h3>NOMAD 400</h3>
-        <p class="descripcion-corta">Sin caminos, sin límites. La Nomad 400 está construida para escapar del asfalto y encontrar el horizonte.</p>
-        <ul class="specs-rapidas">
-          <li>400cc</li>
-          <li>Monocilíndrico</li>
-          <li>Adventure</li>
-        </ul>
-        <span class="precio">$ 14.500.000</span>
-        <a href="#detalle-nomad-400">VER MÁS</a>
-      </article>
-
-      <!-- 5 -->
-      <article class="moto-card" id="renegade-500">
-        <img src="renegade-500.jpg" alt="Iron Rebel Renegade 500">
-        <h3>RENEGADE 500</h3>
-        <p class="descripcion-corta">Estilo clásico, actitud rebelde. La Renegade 500 trae la esencia cruiser con un empuje que no pasa desapercibido.</p>
-        <ul class="specs-rapidas">
-          <li>500cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Cruiser</li>
-        </ul>
-        <span class="precio">$ 17.800.000</span>
-        <a href="#detalle-renegade-500">VER MÁS</a>
-      </article>
-
-      <!-- 6 -->
-      <article class="moto-card" id="viper-650">
-        <img src="viper-650.jpg" alt="Iron Rebel Viper 650">
-        <h3>VIPER 650</h3>
-        <p class="descripcion-corta">Ligera, filosa y directa. La Viper 650 fue diseñada para morder el asfalto urbano con precisión quirúrgica.</p>
-        <ul class="specs-rapidas">
-          <li>650cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Naked</li>
-        </ul>
-        <span class="precio">$ 21.300.000</span>
-        <a href="#detalle-viper-650">VER MÁS</a>
-      </article>
-
-      <!-- 7 -->
-      <article class="moto-card" id="outlaw-750">
-        <img src="outlaw-750.jpg" alt="Iron Rebel Outlaw 750">
-        <h3>OUTLAW 750</h3>
-        <p class="descripcion-corta">La Outlaw 750 no sigue reglas: solo carretera abierta y un rugido que se siente en el pecho.</p>
-        <ul class="specs-rapidas">
-          <li>750cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Cruiser</li>
-        </ul>
-        <span class="precio">$ 24.900.000</span>
-        <a href="#detalle-outlaw-750">VER MÁS</a>
-      </article>
-
-      <!-- 8 -->
-      <article class="moto-card" id="phantom-800">
-        <img src="phantom-800.jpg" alt="Iron Rebel Phantom 800">
-        <h3>PHANTOM 800</h3>
-        <p class="descripcion-corta">Tres cilindros, un solo propósito: velocidad pura envuelta en líneas afiladas y aerodinámicas.</p>
-        <ul class="specs-rapidas">
-          <li>800cc</li>
-          <li>3 cilindros en línea</li>
-          <li>Sport</li>
-        </ul>
-        <span class="precio">$ 28.600.000</span>
-        <a href="#detalle-phantom-800">VER MÁS</a>
-      </article>
-
-      <!-- 9 -->
-      <article class="moto-card" id="drifter-900">
-        <img src="drifter-900.jpg" alt="Iron Rebel Drifter 900">
-        <h3>DRIFTER 900</h3>
-        <p class="descripcion-corta">Hecha para devorar kilómetros, la Drifter 900 combina comodidad de touring con el carácter que define a Iron Rebel.</p>
-        <ul class="specs-rapidas">
-          <li>900cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Touring</li>
-        </ul>
-        <span class="precio">$ 32.400.000</span>
-        <a href="#detalle-drifter-900">VER MÁS</a>
-      </article>
-
-      <!-- 10 -->
-      <article class="moto-card" id="predator-998">
-        <img src="predator-998.jpg" alt="Iron Rebel Predator 998">
-        <h3>PREDATOR 998</h3>
-        <p class="descripcion-corta">La Predator 998 es adrenalina en estado puro, construida para pista y para quienes exigen el máximo.</p>
-        <ul class="specs-rapidas">
-          <li>998cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Sport</li>
-        </ul>
-        <span class="precio">$ 36.700.000</span>
-        <a href="#detalle-predator-998">VER MÁS</a>
-      </article>
-
-      <!-- 11 -->
-      <article class="moto-card" id="voyager-1050">
-        <img src="voyager-1050.jpg" alt="Iron Rebel Voyager 1050">
-        <h3>VOYAGER 1050</h3>
-        <p class="descripcion-corta">Sin fronteras ni límites de terreno. La Voyager 1050 está lista para cruzar continentes.</p>
-        <ul class="specs-rapidas">
-          <li>1050cc</li>
-          <li>4 cilindros en línea</li>
-          <li>Adventure</li>
-        </ul>
-        <span class="precio">$ 39.200.000</span>
-        <a href="#detalle-voyager-1050">VER MÁS</a>
-      </article>
-
-      <!-- 12 -->
-      <article class="moto-card" id="warlord-1200">
-        <img src="warlord-1200.jpg" alt="Iron Rebel Warlord 1200">
-        <h3>WARLORD 1200</h3>
-        <p class="descripcion-corta">Imponente y dominante, la Warlord 1200 es la máxima expresión del estilo cruiser Iron Rebel.</p>
-        <ul class="specs-rapidas">
-          <li>1200cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Cruiser</li>
-        </ul>
-        <span class="precio">$ 42.800.000</span>
-        <a href="#detalle-warlord-1200">VER MÁS</a>
-      </article>
-
-      <!-- 13 -->
-      <article class="moto-card" id="titan-1250">
-        <img src="titan-1250.jpg" alt="Iron Rebel Titan 1250">
-        <h3>TITAN 1250</h3>
-        <p class="descripcion-corta">Confort de largo alcance sin sacrificar potencia: la Titan 1250 redefine el viaje en carretera.</p>
-        <ul class="specs-rapidas">
-          <li>1250cc</li>
-          <li>4 cilindros en línea</li>
-          <li>Touring</li>
-        </ul>
-        <span class="precio">$ 46.500.000</span>
-        <a href="#detalle-titan-1250">VER MÁS</a>
-      </article>
-
-      <!-- 14 -->
-      <article class="moto-card" id="apex-1300">
-        <img src="apex-1300.jpg" alt="Iron Rebel Apex 1300">
-        <h3>APEX 1300</h3>
-        <p class="descripcion-corta">La cima del rendimiento Iron Rebel. La Apex 1300 fue creada para quienes no aceptan segundo lugar.</p>
-        <ul class="specs-rapidas">
-          <li>1300cc</li>
-          <li>4 cilindros en línea</li>
-          <li>Sport</li>
-        </ul>
-        <span class="precio">$ 52.100.000</span>
-        <a href="#detalle-apex-1300">VER MÁS</a>
-      </article>
-
-      <!-- 15 -->
-      <article class="moto-card" id="reaper-1800">
-        <img src="reaper-1800.jpg" alt="Iron Rebel Reaper 1800">
-        <h3>REAPER 1800</h3>
-        <p class="descripcion-corta">La insignia de la marca. La Reaper 1800 impone respeto antes de encender el motor.</p>
-        <ul class="specs-rapidas">
-          <li>1800cc</li>
-          <li>Bicilíndrico en V</li>
-          <li>Cruiser</li>
-        </ul>
-        <span class="precio">$ 58.900.000</span>
-        <a href="#detalle-reaper-1800">VER MÁS</a>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============================= -->
-  <!-- PÁGINAS / SECCIONES DE DETALLE  -->
-  <!-- ============================= -->
-  <section id="detalles-modelos">
-
-    <article class="detalle-modelo" id="detalle-ranger-125">
-      <h2>RANGER 125</h2>
-      <img src="ranger-125-hero.jpg" alt="Iron Rebel Ranger 125 en acción">
-      <p class="historia">
-        Nacida para la ciudad, la Ranger 125 es la puerta de entrada al mundo Iron Rebel:
-        ágil, ligera y lista para el asfalto urbano desde el primer arranque.
-      </p>
-      <div class="precio-detalle">$ 6.500.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>125cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Monocilíndrico, 4 tiempos</td></tr>
-          <tr><th>Rendimiento</th><td>11 HP / 10 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Urban</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="ranger-125-negro.jpg" alt="Ranger 125 color negro mate">
-        <img src="ranger-125-rojo.jpg" alt="Ranger 125 color rojo">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-street-fox-200">
-      <h2>STREET FOX 200</h2>
-      <img src="street-fox-200-hero.jpg" alt="Iron Rebel Street Fox 200 en acción">
-      <p class="historia">
-        Diseñada para quienes dominan las calles al anochecer, la Street Fox 200
-        combina peso ligero con un carácter naked agresivo.
-      </p>
-      <div class="precio-detalle">$ 8.200.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>200cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Monocilíndrico, 4 tiempos</td></tr>
-          <tr><th>Rendimiento</th><td>18 HP / 17 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Naked</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="street-fox-200-gris.jpg" alt="Street Fox 200 color gris carbón">
-        <img src="street-fox-200-azul.jpg" alt="Street Fox 200 color azul eléctrico">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-blackwolf-300">
-      <h2>BLACKWOLF 300</h2>
-      <img src="blackwolf-300-hero.jpg" alt="Iron Rebel Blackwolf 300 en acción">
-      <p class="historia">
-        La Blackwolf 300 ruge con un bicilíndrico paralelo pensado para quienes
-        buscan su primera experiencia deportiva real.
-      </p>
-      <div class="precio-detalle">$ 11.900.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>300cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico paralelo</td></tr>
-          <tr><th>Rendimiento</th><td>36 HP / 27 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Sport</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="blackwolf-300-negro.jpg" alt="Blackwolf 300 color negro">
-        <img src="blackwolf-300-blanco.jpg" alt="Blackwolf 300 color blanco perla">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-nomad-400">
-      <h2>NOMAD 400</h2>
-      <img src="nomad-400-hero.jpg" alt="Iron Rebel Nomad 400 en acción">
-      <p class="historia">
-        Sin caminos, sin límites. La Nomad 400 está construida para escapar
-        del asfalto y encontrar el horizonte.
-      </p>
-      <div class="precio-detalle">$ 14.500.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>400cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Monocilíndrico, refrigerado por líquido</td></tr>
-          <tr><th>Rendimiento</th><td>43 HP / 38 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Adventure</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="nomad-400-verde.jpg" alt="Nomad 400 color verde militar">
-        <img src="nomad-400-gris.jpg" alt="Nomad 400 color gris tierra">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-renegade-500">
-      <h2>RENEGADE 500</h2>
-      <img src="renegade-500-hero.jpg" alt="Iron Rebel Renegade 500 en acción">
-      <p class="historia">
-        Estilo clásico, actitud rebelde. La Renegade 500 trae la esencia
-        cruiser con un empuje que no pasa desapercibido.
-      </p>
-      <div class="precio-detalle">$ 17.800.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>500cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>45 HP / 42 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Cruiser</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="renegade-500-negro.jpg" alt="Renegade 500 color negro mate">
-        <img src="renegade-500-vino.jpg" alt="Renegade 500 color vino tinto">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-viper-650">
-      <h2>VIPER 650</h2>
-      <img src="viper-650-hero.jpg" alt="Iron Rebel Viper 650 en acción">
-      <p class="historia">
-        Ligera, filosa y directa. La Viper 650 fue diseñada para morder
-        el asfalto urbano con precisión quirúrgica.
-      </p>
-      <div class="precio-detalle">$ 21.300.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>650cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>68 HP / 62 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Naked</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="viper-650-negro.jpg" alt="Viper 650 color negro">
-        <img src="viper-650-amarillo.jpg" alt="Viper 650 color amarillo racing">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-outlaw-750">
-      <h2>OUTLAW 750</h2>
-      <img src="outlaw-750-hero.jpg" alt="Iron Rebel Outlaw 750 en acción">
-      <p class="historia">
-        La Outlaw 750 no sigue reglas: solo carretera abierta y un rugido
-        que se siente en el pecho.
-      </p>
-      <div class="precio-detalle">$ 24.900.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>750cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>61 HP / 65 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Cruiser</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="outlaw-750-negro.jpg" alt="Outlaw 750 color negro">
-        <img src="outlaw-750-plata.jpg" alt="Outlaw 750 color plata">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-phantom-800">
-      <h2>PHANTOM 800</h2>
-      <img src="phantom-800-hero.jpg" alt="Iron Rebel Phantom 800 en acción">
-      <p class="historia">
-        Tres cilindros, un solo propósito: velocidad pura envuelta en
-        líneas afiladas y aerodinámicas.
-      </p>
-      <div class="precio-detalle">$ 28.600.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>800cc</td></tr>
-          <tr><th>Tipo de motor</th><td>3 cilindros en línea</td></tr>
-          <tr><th>Rendimiento</th><td>95 HP / 78 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Sport</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="phantom-800-rojo.jpg" alt="Phantom 800 color rojo">
-        <img src="phantom-800-negro.jpg" alt="Phantom 800 color negro brillante">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-drifter-900">
-      <h2>DRIFTER 900</h2>
-      <img src="drifter-900-hero.jpg" alt="Iron Rebel Drifter 900 en acción">
-      <p class="historia">
-        Hecha para devorar kilómetros, la Drifter 900 combina comodidad
-        de touring con el carácter que define a Iron Rebel.
-      </p>
-      <div class="precio-detalle">$ 32.400.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>900cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>85 HP / 88 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Touring</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="drifter-900-azul.jpg" alt="Drifter 900 color azul medianoche">
-        <img src="drifter-900-gris.jpg" alt="Drifter 900 color gris grafito">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-predator-998">
-      <h2>PREDATOR 998</h2>
-      <img src="predator-998-hero.jpg" alt="Iron Rebel Predator 998 en acción">
-      <p class="historia">
-        La Predator 998 es adrenalina en estado puro, construida para
-        pista y para quienes exigen el máximo.
-      </p>
-      <div class="precio-detalle">$ 36.700.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>998cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>158 HP / 105 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Sport</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="predator-998-rojo.jpg" alt="Predator 998 color rojo carbono">
-        <img src="predator-998-negro.jpg" alt="Predator 998 color negro mate">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-voyager-1050">
-      <h2>VOYAGER 1050</h2>
-      <img src="voyager-1050-hero.jpg" alt="Iron Rebel Voyager 1050 en acción">
-      <p class="historia">
-        Sin fronteras ni límites de terreno. La Voyager 1050 está lista
-        para cruzar continentes.
-      </p>
-      <div class="precio-detalle">$ 39.200.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>1050cc</td></tr>
-          <tr><th>Tipo de motor</th><td>4 cilindros en línea</td></tr>
-          <tr><th>Rendimiento</th><td>118 HP / 112 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Adventure</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="voyager-1050-blanco.jpg" alt="Voyager 1050 color blanco expedición">
-        <img src="voyager-1050-naranja.jpg" alt="Voyager 1050 color naranja aventura">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-warlord-1200">
-      <h2>WARLORD 1200</h2>
-      <img src="warlord-1200-hero.jpg" alt="Iron Rebel Warlord 1200 en acción">
-      <p class="historia">
-        Imponente y dominante, la Warlord 1200 es la máxima expresión
-        del estilo cruiser Iron Rebel.
-      </p>
-      <div class="precio-detalle">$ 42.800.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>1200cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>92 HP / 108 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Cruiser</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="warlord-1200-negro.jpg" alt="Warlord 1200 color negro imperial">
-        <img src="warlord-1200-vino.jpg" alt="Warlord 1200 color vino profundo">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-titan-1250">
-      <h2>TITAN 1250</h2>
-      <img src="titan-1250-hero.jpg" alt="Iron Rebel Titan 1250 en acción">
-      <p class="historia">
-        Confort de largo alcance sin sacrificar potencia: la Titan 1250
-        redefine el viaje en carretera.
-      </p>
-      <div class="precio-detalle">$ 46.500.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>1250cc</td></tr>
-          <tr><th>Tipo de motor</th><td>4 cilindros en línea</td></tr>
-          <tr><th>Rendimiento</th><td>135 HP / 128 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Touring</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="titan-1250-azul.jpg" alt="Titan 1250 color azul acero">
-        <img src="titan-1250-plata.jpg" alt="Titan 1250 color plata metálico">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-apex-1300">
-      <h2>APEX 1300</h2>
-      <img src="apex-1300-hero.jpg" alt="Iron Rebel Apex 1300 en acción">
-      <p class="historia">
-        La cima del rendimiento Iron Rebel. La Apex 1300 fue creada
-        para quienes no aceptan segundo lugar.
-      </p>
-      <div class="precio-detalle">$ 52.100.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>1300cc</td></tr>
-          <tr><th>Tipo de motor</th><td>4 cilindros en línea</td></tr>
-          <tr><th>Rendimiento</th><td>188 HP / 141 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Sport</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="apex-1300-negro.jpg" alt="Apex 1300 color negro carbono">
-        <img src="apex-1300-rojo.jpg" alt="Apex 1300 color rojo competición">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-    <article class="detalle-modelo" id="detalle-reaper-1800">
-      <h2>REAPER 1800</h2>
-      <img src="reaper-1800-hero.jpg" alt="Iron Rebel Reaper 1800 en acción">
-      <p class="historia">
-        La insignia de la marca. La Reaper 1800 impone respeto antes
-        de encender el motor.
-      </p>
-      <div class="precio-detalle">$ 58.900.000 COP</div>
-      <table class="tabla-specs">
-        <caption>Ficha técnica</caption>
-        <tbody>
-          <tr><th>Cilindraje</th><td>1800cc</td></tr>
-          <tr><th>Tipo de motor</th><td>Bicilíndrico en V</td></tr>
-          <tr><th>Rendimiento</th><td>110 HP / 155 Nm de torque</td></tr>
-          <tr><th>Estilo</th><td>Cruiser</td></tr>
-        </tbody>
-      </table>
-      <div class="galeria-colores">
-        <img src="reaper-1800-negro.jpg" alt="Reaper 1800 color negro absoluto">
-        <img src="reaper-1800-dorado.jpg" alt="Reaper 1800 color dorado edición especial">
-      </div>
-      <a href="#contacto" class="cta-secundario">SOLICITA INFORMACIÓN</a>
-    </article>
-
-  </section>
-
-  <!-- ============================= -->
-  <!-- SECCIÓN DE MARCA / VALORES     -->
-  <!-- ============================= -->
-  <section id="dna">
-    <h2>IRON REBEL DNA</h2>
-    <p>
-      Iron Rebel Garage nació de la obsesión por la velocidad y el respeto
-      por la mecánica pura. No fabricamos motos para todos: las construimos
-      para quienes entienden que la libertad se conduce, no se explica.
-    </p>
-    <p>
-      Cada modelo que sale de nuestro taller lleva la misma promesa:
-      potencia sin disculpas, diseño sin concesiones.
-    </p>
-  </section>
-
-  <!-- ============================= -->
-  <!-- CTA FINAL / CONTACTO           -->
-  <!-- ============================= -->
-  <section id="contacto">
-    <h2>ENCUENTRA TU MOTO IRON REBEL</h2>
-    <p>Agenda una prueba de manejo o solicita información con nuestro equipo.</p>
-    <form id="form-contacto" action="/enviar-contacto" method="post">
-      <label for="nombre">Nombre completo</label>
-      <input type="text" id="nombre" name="nombre" required>
-
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="telefono">Teléfono</label>
-      <input type="tel" id="telefono" name="telefono">
-
-      <label for="modelo-interes">Modelo de interés</label>
-      <select id="modelo-interes" name="modelo-interes">
-        <option value="ranger-125">Ranger 125</option>
-        <option value="street-fox-200">Street Fox 200</option>
-        <option value="blackwolf-300">Blackwolf 300</option>
-        <option value="nomad-400">Nomad 400</option>
-        <option value="renegade-500">Renegade 500</option>
-        <option value="viper-650">Viper 650</option>
-        <option value="outlaw-750">Outlaw 750</option>
-        <option value="phantom-800">Phantom 800</option>
-        <option value="drifter-900">Drifter 900</option>
-        <option value="predator-998">Predator 998</option>
-        <option value="voyager-1050">Voyager 1050</option>
-        <option value="warlord-1200">Warlord 1200</option>
-        <option value="titan-1250">Titan 1250</option>
-        <option value="apex-1300">Apex 1300</option>
-        <option value="reaper-1800">Reaper 1800</option>
-      </select>
-
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="4"></textarea>
-
-      <button type="submit">SOLICITAR PRUEBA DE MANEJO</button>
-    </form>
-  </section>
-
-  <!-- ============================= -->
-  <!-- FOOTER                          -->
-  <!-- ============================= -->
-  <footer id="site-footer">
-    <div class="footer-redes">
-      <a href="https://instagram.com/ironrebelgarage" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://facebook.com/ironrebelgarage" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/ironrebelgarage" target="_blank" rel="noopener">YouTube</a>
-    </div>
-
-    <div class="footer-newsletter">
-      <h3>Suscríbete al newsletter</h3>
-      <form id="form-newsletter" action="/suscripcion" method="post">
-        <label for="newsletter-email">Correo electrónico</label>
-        <input type="email" id="newsletter-email" name="newsletter-email" required>
-        <button type="submit">SUSCRIBIRME</button>
+  <!-- ========== SECCIÓN "ENCUENTRA TU MOTO" ========== -->
+  <section id="motos">
+    <h2>🏍️ Encuentra tu moto</h2>
+    <div>
+      <form id="filtrosForm">
+        <fieldset>
+          <legend>Estilo</legend>
+          <label><input type="checkbox" name="estilo" value="naked"> Naked</label>
+          <label><input type="checkbox" name="estilo" value="cruiser"> Cruiser</label>
+          <label><input type="checkbox" name="estilo" value="sport"> Sport</label>
+          <label><input type="checkbox" name="estilo" value="adventure"> Adventure</label>
+          <label><input type="checkbox" name="estilo" value="urban"> Urban</label>
+          <label><input type="checkbox" name="estilo" value="touring"> Touring</label>
+        </fieldset>
+        <fieldset>
+          <legend>Cilindraje</legend>
+          <label><input type="checkbox" name="cilindraje" value="bajo"> Bajo (≤ 400cc)</label>
+          <label><input type="checkbox" name="cilindraje" value="medio"> Medio (401-800cc)</label>
+          <label><input type="checkbox" name="cilindraje" value="alto"> Alto (> 800cc)</label>
+        </fieldset>
+        <fieldset>
+          <legend>Uso</legend>
+          <label><input type="checkbox" name="uso" value="urbano"> Urbano</label>
+          <label><input type="checkbox" name="uso" value="carretera"> Carretera</label>
+          <label><input type="checkbox" name="uso" value="offroad"> Off-road</label>
+        </fieldset>
+        <div class="btn-group">
+          <button type="submit">Aplicar filtros</button>
+          <button type="reset">Limpiar</button>
+        </div>
       </form>
+      <p><strong id="motoCount">16</strong> modelos disponibles · potencia, adrenalina y exclusividad</p>
     </div>
+  </section>
 
-    <div class="footer-legal">
-      <a href="/terminos-condiciones">Términos y condiciones</a>
-      <a href="/politica-privacidad">Política de privacidad</a>
+  <!-- ========== GRID DE CATÁLOGO ========== -->
+  <section id="catalogo">
+    <h2>⚡ Catálogo Iron Rebel</h2>
+    <div id="gridContainer">
+      <!-- Las tarjetas se generan dinámicamente con JavaScript -->
     </div>
+  </section>
 
-    <div class="footer-ubicaciones">
-      <h3>Nuestras tiendas</h3>
-      <address>Sede Principal — Cúcuta, Norte de Santander, Colombia</address>
+  <!-- ========== DETALLES DE MODELOS ========== -->
+  <section id="detalles">
+    <h2>🔍 Detalle de modelos</h2>
+    <!-- Los detalles se generan dinámicamente con JavaScript -->
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div>
+      <div>
+        <h4>⚡ IRON REBEL GARAGE</h4>
+        <p>Más que motos, una actitud. Potencia, estilo y adrenalina desde 2015.</p>
+      </div>
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Garantía</a></li>
+          <li><a href="#">Política de devolución</a></li>
+          <li><a href="#">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto directo</h4>
+        <address>
+          📞 <a href="tel:+525512345678">+52 (55) 1234 5678</a><br>
+          ✉️ <a href="mailto:info@ironrebelgarage.com">info@ironrebelgarage.com</a><br>
+          📍 Av. Revolución 1234, CDMX
+        </address>
+      </div>
     </div>
-
-    <p class="footer-copy">&copy; 2026 Iron Rebel Garage. Todos los derechos reservados.</p>
+    <div>
+      <p>&copy; 2026 Iron Rebel Garage. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
+  <script src="cliente.js"></script>
 </body>
 </html>
