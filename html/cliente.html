@@ -7,6 +7,7 @@
 
   <!-- Estilos -->
   <link rel="stylesheet" href="../css/cliente.css">
+  <link rel="stylesheet" href="../css/main.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,26 +16,10 @@
 </head>
 <body>
 
-  <!-- ========== BARRA DE NAVEGACIÓN ========== -->
-  <header>
-    <nav>
-      <div class="logo">
-        <a href="cliente.html">⚡ IRON REBEL GARAGE</a>
-      </div>
-      <div>
-        <ul>
-          <li><a href="cliente.html" class="active">Catálogo</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <form id="searchForm" action="cliente.html" method="get">
-          <input type="text" id="searchInput" name="buscar" placeholder="Buscar modelo..." aria-label="Buscar moto">
-          <button type="submit">🔍</button>
-        </form>
-      </div>
-    </nav>
-  </header>
+  <!-- ======================================== -->
+  <!-- EL HEADER SE INYECTA AUTOMÁTICAMENTE    -->
+  <!-- DESDE main.html MEDIANTE header-loader.js -->
+  <!-- ======================================== -->
 
   <!-- ========== SECCIÓN "ENCUENTRA TU MOTO" ========== -->
   <section id="motos">
@@ -71,17 +56,13 @@
     </div>
   </section>
 
-  <!-- ========== GRID DE CATÁLOGO ==========
-       Las tarjetas se generan dinámicamente con js/cliente.js
-       a partir del array `motos`, así que aquí solo va el
-       contenedor vacío con el id que el script espera. -->
+  <!-- ========== GRID DE CATÁLOGO ========== -->
   <section id="catalogo">
     <h2>⚡ Catálogo Iron Rebel</h2>
     <div id="gridContainer"></div>
   </section>
 
-  <!-- ========== DETALLES DE MODELOS ==========
-       También generados dinámicamente por js/cliente.js. -->
+  <!-- ========== DETALLES DE MODELOS ========== -->
   <section id="detalles">
     <h2>🔍 Detalle de modelos</h2>
   </section>
@@ -117,6 +98,8 @@
     </div>
   </footer>
 
-<script src="../js/cliente.js"></script>
+  <!-- Scripts -->
+  <script src="../main.js"></script>
+  <script src="../js/cliente.js"></script>
 </body>
 </html>
