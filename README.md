@@ -41,6 +41,8 @@ Redes sociales, newsletter, links legales, ubicación de tiendas físicas.
 OBJETIVO
 Presentar el catálogo de Iron Rebel Garage de forma atractiva, variada y profesional, generando deseo de compra y motivando al usuario a explorar los modelos y realizar una acción concreta de contacto o compra.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ESTE ES NUESTRO SEGUNDO PROMPT QUE USAMOS PARA GENERAR LA PARTE VISUAL-(CSS) PARA EL CLIENTE:
 
 ROL:
@@ -68,3 +70,51 @@ El objetivo es ofrecer una experiencia visual limpia, elegante y altamente intui
 RESULTADO ESPERADO:
 
 Genera una interfaz completamente funcional y coherente, con un diseño de nivel profesional, utilizando el estilo Vidrio Esmerilado (Frosted Glass / Glassmorphism) combinado con Neumorphism, optimizada para cualquier dispositivo (móvil, tablet y escritorio). Cada componente debe mantener una identidad visual consistente, con animaciones suaves, excelente rendimiento, accesibilidad y una experiencia de usuario intuitiva. El resultado debe parecer una plataforma moderna de alta gama para la exploración y comparación de motocicletas.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ESTE ES EL TERCER PROMPT PARA SEPARAR LA BARRA DE BUSQUEDA Y HACERLA INDEPENDIENTE Y INYACTARLA DESDE OTRO ARCHIBO:
+
+1 **ROL**
+
+Actúa como un **Desarrollador Frontend Senior** especializado en HTML5, CSS3 y JavaScript ES6+. Tu objetivo es refactorizar código existente sin modificar su funcionamiento. Debes seguir principios de código limpio, modularidad y reutilización, asegurándote de que la estructura del proyecto sea más organizada y fácil de mantener.
+
+---
+
+2 **CONTEXTO**
+
+Actualmente, la barra de búsqueda se encuentra escrita directamente dentro de un archivo HTML del proyecto. Esto provoca que el código sea difícil de mantener y reutilizar en otras páginas.
+
+La tarea consiste en extraer completamente la barra de búsqueda y convertirla en un componente independiente ubicado en una carpeta específica del proyecto. Una vez separada, deberá cargarse dinámicamente desde su nueva ubicación utilizando JavaScript, de manera que cualquier página pueda reutilizarla sin necesidad de copiar y pegar código.
+
+La refactorización debe realizarse respetando la estructura actual del proyecto. No se debe modificar el diseño visual, la lógica de funcionamiento ni el comportamiento del buscador. El usuario final no debe notar ninguna diferencia; el único cambio debe ser interno, mejorando la organización del código.
+
+---
+
+3 **RESTRICCIONES**
+
+* No modificar el diseño de la barra de búsqueda.
+* No cambiar la lógica existente del buscador.
+* No renombrar clases, identificadores o funciones si no es estrictamente necesario.
+* No eliminar funcionalidades existentes.
+* No duplicar código.
+* Mantener una estructura modular y fácil de mantener.
+* La barra de búsqueda debe poder reutilizarse desde cualquier página del proyecto mediante una única llamada de JavaScript.
+* Todas las rutas utilizadas deben ser correctas y funcionar sin errores.
+
+---
+
+4 **ITERACIÓN**
+
+Antes de escribir cualquier código, analiza cómo está construida la barra de búsqueda e identifica qué partes pertenecen al HTML, CSS y JavaScript.
+
+Después de realizar la separación, verifica que todos los estilos continúen aplicándose correctamente y que cada función del buscador siga funcionando exactamente igual que antes.
+
+Finalmente, revisa todo el proceso para asegurarte de que no existan errores de rutas, errores de consola, funciones rotas o problemas de integración. Si detectas algún inconveniente, corrígelo antes de entregar la solución final.
+
+---
+
+4 **CARACTERÍSTICAS**
+
+La solución debe estar orientada a crear un componente completamente independiente, reutilizable y fácil de mantener. El código debe ser claro, organizado y seguir buenas prácticas de desarrollo. Al finalizar, entrega la nueva estructura de carpetas, el código completo de los archivos creados o modificados y explica brevemente cómo se realiza la inyección de la barra de búsqueda para que pueda utilizarse en cualquier página del proyecto sin volver a escribir su código.
