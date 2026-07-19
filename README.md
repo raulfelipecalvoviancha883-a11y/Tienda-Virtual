@@ -41,6 +41,8 @@ Redes sociales, newsletter, links legales, ubicación de tiendas físicas.
 OBJETIVO
 Presentar el catálogo de Iron Rebel Garage de forma atractiva, variada y profesional, generando deseo de compra y motivando al usuario a explorar los modelos y realizar una acción concreta de contacto o compra.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ESTE ES NUESTRO SEGUNDO PROMPT QUE USAMOS PARA GENERAR LA PARTE VISUAL-(CSS) PARA EL CLIENTE:
 
 ROL:
