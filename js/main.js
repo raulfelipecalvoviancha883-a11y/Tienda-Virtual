@@ -28,6 +28,11 @@
         
         container.innerHTML = html;
         initHeaderFunctions();
+
+        // Avisar al resto de scripts (cliente.js, contacto.js, etc.)
+        // de que el header ya está en el DOM, ya que se carga de forma
+        // asíncrona y otros scripts pueden ejecutarse antes de que exista.
+        document.dispatchEvent(new CustomEvent('header:loaded'));
     }
 
     /**
@@ -84,6 +89,7 @@
                     <ul>
                         <li><a href="cliente.html">Catálogo</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="loguin.html">Iniciar sesión</a></li>
                     </ul>
                     <form id="searchForm" action="cliente.html" method="get">
                         <input type="text" id="searchInput" name="buscar" placeholder="Buscar modelo..." aria-label="Buscar moto">

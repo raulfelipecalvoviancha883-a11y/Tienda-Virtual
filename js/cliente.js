@@ -222,10 +222,15 @@
   const gridContainer = document.getElementById('gridContainer');
   const detallesContainer = document.getElementById('detalles');
   const filterForm = document.getElementById('filtrosForm');
-  const searchInput = document.getElementById('searchInput');
-  const searchForm = document.getElementById('searchForm');
   const resetBtn = filterForm ? filterForm.querySelector('button[type="reset"]') : null;
   const countDisplay = document.getElementById('motoCount');
+
+  // La barra de búsqueda vive en el header, que main.js inyecta de forma
+  // ASÍNCRONA (fetch). Por eso no se puede capturar una única vez al
+  // cargar este script: searchInput/searchForm todavía no existirían.
+  // En su lugar, se referencian mediante funciones que se re-evalúan.
+  const getSearchInput = () => document.getElementById('searchInput');
+  const getSearchForm = () => document.getElementById('searchForm');
 
   // ---------- FUNCIÓN PARA GENERAR SVG DE IMAGEN ----------
   function generateMotoImage(nombre, estilo, cc) {
@@ -332,7 +337,8 @@
     });
 
     // Búsqueda por texto
-    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const searchInputEl = getSearchInput();
+    const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase().trim() : '';
 
     // Aplicar filtros
     let resultado = motos.filter(moto => {
@@ -372,7 +378,8 @@
       const checkboxes = filterForm.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(cb => cb.checked = false);
     }
-    if (searchInput) searchInput.value = '';
+    const searchInputEl = getSearchInput();
+    if (searchInputEl) searchInputEl.value = '';
     filtrarMotos();
   }
 
@@ -393,15 +400,26 @@
     }
   }
 
-  if (searchForm) {
+  // Bandera para no enganchar los listeners del buscador dos veces
+  let searchBarWired = false;
+
+  function wireSearchBar() {
+    const searchForm = getSearchForm();
+    const searchInput = getSearchInput();
+    if (!searchForm || !searchInput || searchBarWired) return;
+
     searchForm.addEventListener('submit', function(e) {
       e.preventDefault();
       filtrarMotos();
     });
-  }
 
-  if (searchInput) {
     searchInput.addEventListener('input', filtrarMotos);
+
+    searchBarWired = true;
+
+    // Si la URL trae ?buscar=, se aplica ahora que el input ya existe
+    aplicarBusquedaDesdeURL();
+    filtrarMotos();
   }
 
   // ---------- COMPORTAMIENTO DE ENLACES "VER MÁS" ----------
@@ -436,14 +454,22 @@
   function aplicarBusquedaDesdeURL() {
     const params = new URLSearchParams(window.location.search);
     const termino = params.get('buscar');
-    if (termino && searchInput) {
-      searchInput.value = termino;
+    const searchInputEl = getSearchInput();
+    if (termino && searchInputEl) {
+      searchInputEl.value = termino;
     }
   }
 
   // ---------- INICIALIZAR ----------
-  aplicarBusquedaDesdeURL();
+  // Renderiza el catálogo de inmediato (no depende del header)
   filtrarMotos();
+
+  // El buscador del header puede tardar en existir porque main.js lo
+  // inyecta de forma asíncrona. Se intenta enganchar ya mismo por si
+  // ya estuviera disponible (caché) y también en cuanto avise que
+  // terminó de cargar.
+  wireSearchBar();
+  document.addEventListener('header:loaded', wireSearchBar);
 
   console.log('🏍️ Iron Rebel Garage · Catálogo cargado correctamente');
   console.log(`📊 ${motos.length} modelos disponibles`);
