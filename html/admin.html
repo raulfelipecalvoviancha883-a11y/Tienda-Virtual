@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador | Iron Rebel Garage</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            <i class="fa-solid fa-motorcycle"></i>
+            <h2>Iron Rebel Garage</h2>
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="../main.html">
+                        <i class="fa-solid fa-house"></i>
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cliente.html">
+                        <i class="fa-solid fa-store"></i>
+                        Catálogo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        <i class="fa-solid fa-envelope"></i>
+                        Contacto
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <h3>Panel</h3>
+
+        <ul>
+
+            <li class="activo">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </li>
+
+            <li>
+                <i class="fa-solid fa-motorcycle"></i>
+                Motocicletas
+            </li>
+
+            <li>
+                <i class="fa-solid fa-users"></i>
+                Clientes
+            </li>
+
+            <li>
+                <i class="fa-solid fa-cart-shopping"></i>
+                Ventas
+            </li>
+
+            <li>
+                <i class="fa-solid fa-envelope"></i>
+                Mensajes
+            </li>
+
+            <li>
+                <i class="fa-solid fa-gear"></i>
+                Configuración
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main>
+
+        <section class="titulo">
+
+            <h1>Dashboard Administrador</h1>
+
+            <p>
+                Bienvenido al panel de administración de Iron Rebel Garage.
+            </p>
+
+        </section>
+
+        <!-- Tarjetas -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-motorcycle"></i>
+
+                <h2 id="motos">25</h2>
+
+                <span>Motocicletas</span>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h2 id="clientes">84</h2>
+
+                <span>Clientes</span>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h2 id="ventas">42</h2>
+
+                <span>Ventas</span>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <h2 id="mensajes">17</h2>
+
+                <span>Mensajes</span>
+
+            </div>
+
+        </section>
+
+        <!-- Acciones -->
+
+        <section class="acciones">
+
+            <h2>Acciones rápidas</h2>
+
+            <div class="botones">
+
+                <button id="btnMoto">
+                    <i class="fa-solid fa-plus"></i>
+                    Gestionar Motocicletas
+                </button>
+
+                <button id="btnClientes">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Gestionar Clientes
+                </button>
+
+                <button id="btnVentas">
+                    <i class="fa-solid fa-money-bill"></i>
+                    Ver Ventas
+                </button>
+
+                <button id="btnMensajes">
+                    <i class="fa-solid fa-comments"></i>
+                    Revisar Mensajes
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Tabla -->
+
+        <section class="tabla">
+
+            <h2>Últimas Motocicletas Registradas</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Marca</th>
+
+                        <th>Modelo</th>
+
+                        <th>Precio</th>
+
+                        <th>Estado</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>001</td>
+
+                        <td>Yamaha</td>
+
+                        <td>MT-09</td>
+
+                        <td>$58.000.000</td>
+
+                        <td>Disponible</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>002</td>
+
+                        <td>Honda</td>
+
+                        <td>CB650R</td>
+
+                        <td>$49.900.000</td>
+
+                        <td>Disponible</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>003</td>
+
+                        <td>Kawasaki</td>
+
+                        <td>Z900</td>
+
+                        <td>$63.000.000</td>
+
+                        <td>Vendida</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>004</td>
+
+                        <td>Suzuki</td>
+
+                        <td>GSX-S750</td>
+
+                        <td>$46.500.000</td>
+
+                        <td>Disponible</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Iron Rebel Garage | Panel de Administración
+
+        </p>
+
+    </footer>
+
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>
