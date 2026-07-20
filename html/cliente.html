@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Rebel Garage · Catálogo</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/cliente.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ======================================== -->
+  <!-- EL HEADER SE INYECTA AUTOMÁTICAMENTE    -->
+  <!-- DESDE main.html MEDIANTE header-loader.js -->
+  <!-- ======================================== -->
+
+  <!-- ========== SECCIÓN "ENCUENTRA TU MOTO" ========== -->
+  <section id="motos">
+    <h2>🏍️ Encuentra tu moto</h2>
+    <div>
+      <form id="filtrosForm">
+        <fieldset>
+          <legend>Estilo</legend>
+          <label><input type="checkbox" name="estilo" value="naked"> Naked</label>
+          <label><input type="checkbox" name="estilo" value="cruiser"> Cruiser</label>
+          <label><input type="checkbox" name="estilo" value="sport"> Sport</label>
+          <label><input type="checkbox" name="estilo" value="adventure"> Adventure</label>
+          <label><input type="checkbox" name="estilo" value="urban"> Urban</label>
+          <label><input type="checkbox" name="estilo" value="touring"> Touring</label>
+        </fieldset>
+        <fieldset>
+          <legend>Cilindraje</legend>
+          <label><input type="checkbox" name="cilindraje" value="bajo"> Bajo (≤ 400cc)</label>
+          <label><input type="checkbox" name="cilindraje" value="medio"> Medio (401-800cc)</label>
+          <label><input type="checkbox" name="cilindraje" value="alto"> Alto (> 800cc)</label>
+        </fieldset>
+        <fieldset>
+          <legend>Uso</legend>
+          <label><input type="checkbox" name="uso" value="urbano"> Urbano</label>
+          <label><input type="checkbox" name="uso" value="carretera"> Carretera</label>
+          <label><input type="checkbox" name="uso" value="offroad"> Off-road</label>
+        </fieldset>
+        <div class="btn-group">
+          <button type="submit">Aplicar filtros</button>
+          <button type="reset">Limpiar</button>
+        </div>
+      </form>
+      <p><strong id="motoCount">16</strong> modelos disponibles · potencia, adrenalina y exclusividad</p>
+    </div>
+  </section>
+
+  <!-- ========== GRID DE CATÁLOGO ========== -->
+  <section id="catalogo">
+    <h2>⚡ Catálogo Iron Rebel</h2>
+    <div id="gridContainer"></div>
+  </section>
+
+  <!-- ========== DETALLES DE MODELOS ========== -->
+  <section id="detalles">
+    <h2>🔍 Detalle de modelos</h2>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div>
+      <div>
+        <h4>⚡ IRON REBEL GARAGE</h4>
+        <p>Más que motos, una actitud. Potencia, estilo y adrenalina desde 2015.</p>
+      </div>
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Garantía</a></li>
+          <li><a href="#">Política de devolución</a></li>
+          <li><a href="#">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto directo</h4>
+        <address>
+          📞 <a href="tel:+525512345678">+52 (55) 1234 5678</a><br>
+          ✉️ <a href="mailto:info@ironrebelgarage.com">info@ironrebelgarage.com</a><br>
+          📍 Av. Revolución 1234, CDMX
+        </address>
+      </div>
+    </div>
+    <div>
+      <p>&copy; 2026 Iron Rebel Garage. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../main.js"></script>
+  <script src="../js/cliente.js"></script>
+</body>
+</html>

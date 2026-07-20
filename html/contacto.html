@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Rebel Garage · Contacto</title>
+
+  <!-- Estilos globales y específicos -->
+  <link rel="stylesheet" href="../css/cliente.css">
+  <link rel="stylesheet" href="../css/contacto.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ======================================== -->
+  <!-- EL HEADER SE INYECTA AUTOMÁTICAMENTE    -->
+  <!-- DESDE main.html MEDIANTE main.js -->
+  <!-- ======================================== -->
+
+  <!-- ========== SECCIÓN CONTACTO ========== -->
+  <section class="contact-section">
+    <h2>📬 Contacto</h2>
+    
+    <div class="contact-grid">
+      <!-- Columna izquierda: Información -->
+      <div class="contact-info glass-card">
+        <h3>¿Hablamos?</h3>
+        <p class="contact-desc">
+          Estamos aquí para ayudarte a encontrar la moto perfecta. 
+          Cuéntanos tus necesidades y te asesoraremos sin compromiso.
+        </p>
+        
+        <div class="info-item">
+          <span class="icon">📍</span>
+          <div>
+            <strong>Dirección</strong>
+            <address>
+              Av. Revolución 1234<br>
+              Col. Centro, CDMX<br>
+              C.P. 06000, México
+            </address>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <span class="icon">📞</span>
+          <div>
+            <strong>Teléfono</strong>
+            <p><a href="tel:+525512345678">+52 (55) 1234 5678</a></p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <span class="icon">✉️</span>
+          <div>
+            <strong>Correo</strong>
+            <p><a href="mailto:info@ironrebelgarage.com">info@ironrebelgarage.com</a></p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <span class="icon">🕐</span>
+          <div>
+            <strong>Horario</strong>
+            <p>Lun - Vie: 10:00 - 20:00<br>
+            Sáb: 10:00 - 18:00<br>
+            Dom: Cerrado</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="X">🐦</a>
+        </div>
+      </div>
+      
+      <!-- Columna derecha: Formulario -->
+      <div class="contact-form-wrapper neumo-card">
+        <h3>Envíanos un mensaje</h3>
+        <p class="form-subtitle">
+          Completa el formulario y te responderemos en menos de 24 horas.
+        </p>
+        
+        <form id="contactForm" novalidate>
+          <!-- Nombre -->
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input 
+              type="text" 
+              id="nombre" 
+              name="nombre" 
+              placeholder="Ej: Juan Pérez" 
+              required
+              minlength="2"
+              maxlength="80"
+            >
+            <span class="error-message" data-for="nombre"></span>
+          </div>
+          
+          <!-- Correo -->
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="ejemplo@correo.com" 
+              required
+            >
+            <span class="error-message" data-for="email"></span>
+          </div>
+          
+          <!-- Teléfono -->
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input 
+              type="tel" 
+              id="telefono" 
+              name="telefono" 
+              placeholder="+52 55 1234 5678"
+            >
+            <span class="error-message" data-for="telefono"></span>
+          </div>
+          
+          <!-- Asunto -->
+          <div class="form-group">
+            <label for="asunto">Asunto *</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona una opción</option>
+              <option value="informacion">Solicitar información</option>
+              <option value="cotizacion">Cotización</option>
+              <option value="testdrive">Agendar test drive</option>
+              <option value="soporte">Soporte post-venta</option>
+              <option value="otros">Otros</option>
+            </select>
+            <span class="error-message" data-for="asunto"></span>
+          </div>
+          
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea 
+              id="mensaje" 
+              name="mensaje" 
+              placeholder="Cuéntanos cómo podemos ayudarte..." 
+              rows="5" 
+              required
+              minlength="10"
+              maxlength="500"
+            ></textarea>
+            <span class="error-message" data-for="mensaje"></span>
+            <small class="char-counter">0 / 500 caracteres</small>
+          </div>
+          
+          <!-- Checkbox (opcional) -->
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="terminos" name="terminos" required>
+              Acepto los <a href="#">términos y condiciones</a> y el <a href="#">aviso de privacidad</a> *
+            </label>
+            <span class="error-message" data-for="terminos"></span>
+          </div>
+          
+          <!-- Botones -->
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              ✉️ Enviar mensaje
+            </button>
+            <button type="reset" class="btn-secondary">
+              Limpiar
+            </button>
+          </div>
+          
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAPA (opcional) ========== -->
+  <section class="map-section">
+    <h2>📍 Encuéntranos</h2>
+    <div class="map-container glass-card">
+      <div class="map-placeholder">
+        <div class="map-pin">📍</div>
+        <p>Av. Revolución 1234, CDMX</p>
+        <span class="map-note">(Integra aquí tu mapa interactivo)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div>
+      <div>
+        <h4>⚡ IRON REBEL GARAGE</h4>
+        <p>Más que motos, una actitud. Potencia, estilo y adrenalina desde 2015.</p>
+      </div>
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Garantía</a></li>
+          <li><a href="#">Política de devolución</a></li>
+          <li><a href="#">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto directo</h4>
+        <address>
+          📞 <a href="tel:+525512345678">+52 (55) 1234 5678</a><br>
+          ✉️ <a href="mailto:info@ironrebelgarage.com">info@ironrebelgarage.com</a><br>
+          📍 Av. Revolución 1234, CDMX
+        </address>
+      </div>
+    </div>
+    <div>
+      <p>&copy; 2026 Iron Rebel Garage. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../main.js"></script>
+  <script src="../js/contacto.js"></script>
+</body>
+</html>
